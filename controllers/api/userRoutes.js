@@ -3,7 +3,12 @@ const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+
+    const { email, password, name } = req.body;
+
+    if (!email || !password || !name) res.status(400).send("Expected email, password, and name, but they were not provided");
+    
+    const userData = await User.create({ email, password, name });
 
     req.session.save(() => {
       req.session.user_id = userData.id;

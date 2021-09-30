@@ -21,6 +21,8 @@
     "express-openid-connect": "^2.5.1",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

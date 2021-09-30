@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class TimeBlock extends Model {}
+class Project extends Model {}
 
-TimeBlock.init(
+Project.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,29 +11,37 @@ TimeBlock.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    type: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
     },
-    howLong: {
-      type: DataTypes.INTEGER,
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    needed_funding: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'users',
+        model: 'user',
         key: 'id',
       },
     },
   },
   {
     sequelize,
-    modelName: 'timeBlock',
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'project',
   }
 );
 
-module.exports = TimeBlock;
+module.exports = Project;

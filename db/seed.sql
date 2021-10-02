@@ -8,7 +8,7 @@ VALUES
     (5, 'tyler123', 'persist-tyler@mailinator.com');
 
 INSERT INTO
-    `task_table` (id, color, category, category_sub, `day`, `hours`, `user_id`)
+    `task` (id, color, category, category_sub, `day`, `hours`, `user_id`)
 VALUES
     (1, 'black', 'fitness', '', 0, 4, 1),
     (2, 'black', 'fitness', '', 1, 4, 1),

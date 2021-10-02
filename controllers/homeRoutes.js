@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
+    //potatoes
     const projectData = await Project.findAll({
       include: [
         {

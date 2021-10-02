@@ -1,5 +1,5 @@
 INSERT INTO
-    `user_table` (id, email, auth_token)
+    `user` (id, email, auth_token)
 VALUES
     (1, 'persist-alex@mailinator.com', '6cfef3de-239c-11ec-9621-0242ac130002'),
     (2, 'persist-kelley@mailinator.com', '6cfef5dc-239c-11ec-9621-0242ac130002'),
@@ -8,7 +8,7 @@ VALUES
     (5, 'persist-tyler@mailinator.com', '6cfef87a-239c-11ec-9621-0242ac130002');
 
 INSERT INTO
-    `task_table` (id, color, category, category_sub, `day`, `hours`, `user_id`)
+    `task` (id, color, category, category_sub, `day`, `hours`, `user_id`)
 VALUES
     (1, 'black', 'fitness', '', 0, 4, 1),
     (2, 'black', 'fitness', '', 1, 4, 1),

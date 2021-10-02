@@ -1,5 +1,5 @@
 <!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
+{{!-- {{#each projects as |project| }} --}}
 <div class="column is-4 project">
   <div class="card">
     <header class="card-header color-fill">
@@ -12,15 +12,15 @@
         <p>
           <span for="img" aria-label="calendar">📅</span>
           <!-- Pass needed_funding value to the helper function -->
-          <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
+          <span class="dollar-amount">{{project.needed_funding}}</span>
           hours needed!
         </p>
         <p>
           {{project.description}}
         </p>
-        <p>Created on {{format_date project.date_created}}</p>
+        <p>Created on {{ project.date_created}}</p>
       </div>
     </div>
   </div>
 </div>
-{{/each}}
+{{!-- {{/each}} --}}

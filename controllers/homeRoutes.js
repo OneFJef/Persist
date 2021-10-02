@@ -41,7 +41,8 @@ router.get('/project/:id', async (req, res) => {
     const project = projectData.get({ plain: true });
 
     res.render('project', {
-      ...project,
+      project,
+      sponsors: [{ name: "Google" }],
       logged_in: req.session.logged_in
     });
   } catch (err) {

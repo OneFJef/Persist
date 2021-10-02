@@ -1,5 +1,10 @@
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+header.color-fill {
+  background-color: orange;
+}
+
+p.pad-me {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .no-button {

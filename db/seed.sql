@@ -1,5 +1,5 @@
 INSERT INTO
-    `user_table` (id, nickname, email)
+    `user` (id, nickname, email)
 VALUES
     (1, 'alex123', 'persist-alex@mailinator.com'),
     (2, 'kelley123', 'persist-kelley@mailinator.com'),

@@ -9,7 +9,7 @@ CREATE TABLE `task_table` (
   `id` int NOT NULL AUTO_INCREMENT,
   `color` varchar(50) DEFAULT NULL,
   `category` varchar(50) NOT NULL,
-  `category-sub` varchar(50) DEFAULT NULL,
+  `category_sub` varchar(50) DEFAULT NULL,
   `day` int NOT NULL,
   `hours` int NOT NULL,
   `user_id` int NOT NULL,

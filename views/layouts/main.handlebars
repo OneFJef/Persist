@@ -11,7 +11,7 @@
 
 <body>
 
-  <header class="display-flex justify-space-between align-center p-2">
+    <header class="display-flex justify-space-between align-center p-2">
     <section class="hero is-medium is-warning">
       <div class="hero is-warning">
         <p class="title has-text-centered pad-me">
@@ -25,8 +25,13 @@
         {{#if logged_in}}
         <div class="navbar-start">
           <div class="navbar-item">
-            <a href="/profile" class="navbar-item">profile</a>
+            <a href="/profile" class="navbar-item">New Task</a>
           </div>
+          <div class="navbar-item">
+            <a href="/" class="navbar-item">Categories</a>
+          </div>
+        </div>
+        <div class="navbar-end">
           <div class="navbar-item">
             <button class="button" id="logout">logout</button>
           </div>

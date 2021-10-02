@@ -5,13 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Persist</title>
+<<<<<<< HEAD
+  <link rel="stylesheet" href="/css/jass.css">
+=======
+>>>>>>> 6d4b1762e7e4d7a85bffdc4ade557f2f072aa3f1
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
 <body>
 
-    <header class="display-flex justify-space-between align-center p-2">
+  <header class="display-flex justify-space-between align-center p-2">
     <section class="hero is-medium is-warning">
       <div class="hero is-warning">
         <p class="title has-text-centered pad-me">
@@ -30,12 +34,19 @@
           <div class="navbar-item">
             <a href="/" class="navbar-item">Categories</a>
           </div>
-        </div>
-        <div class="navbar-end">
           <div class="navbar-item">
-            <button class="button" id="logout">logout</button>
+            <a href="/day" class="navbar-item">Day View</a>
+          </div>
+          <div class="navbar-item">
+            <a href="/" class="navbar-item">Week View</a>
           </div>
         </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <button class="button" id="logout">logout</button>
+        </div>
+      </div>
       </div>
       {{else}}
       <div class="navbar-menu">

@@ -31,6 +31,7 @@ router.get('/newtask', async (req, res) => {
   }
 });
 
+// Create new task
 router.post("/newtask", async (req, res) => {
   try {
     
@@ -52,12 +53,35 @@ router.get('/week', async (req, res) => {
   }
 });
 
+
+// Go to a specific task
 router.get('/task/:id', async (req, res) => {
   try {
     const taskData = await Task.findByPk(req.params.id);
     const task = taskData.get({ plain: true });
 
     res.render('task', { task });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Edit a specific task
+router.put('/task/:id', async (req, res) => {
+  try {
+    const taskData = await Task.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!taskData[0]) {
+      res.status(404).json({ message: "No task found with that id" });
+      return;
+    }
+
+    const task = taskData.get({ plain: true });
+    res.render('task', { task });
+    
   } catch (err) {
     res.status(500).json(err);
   }

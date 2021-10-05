@@ -23,10 +23,6 @@ Task.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    day: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false,

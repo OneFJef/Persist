@@ -19,7 +19,10 @@ router.get('/day', async (req, res) => {
   try {
     const taskData = await Task.findAll();
     const tasks = taskData.map((task) => task.get({ plain: true }));
-    res.render('day', { tasks });
+    res.render('day', { 
+      tasks,
+      logged_in: req.oidc.isAuthenticated()
+     });
 
   } catch (err) {
     res.status(500).json(err);
@@ -29,7 +32,7 @@ router.get('/day', async (req, res) => {
 router.get('/newtask', async (req, res) => {
   try {
 
-    res.render('newtask');
+    res.render('newtask', {logged_in: req.oidc.isAuthenticated()})
   } catch (err) {
     res.status(500).json(err);
   }
@@ -51,7 +54,7 @@ router.post("/newtask", async (req, res) => {
 router.get('/week', async (req, res) => {
   try {
 
-    res.render('week');
+    res.render('week', {logged_in: req.oidc.isAuthenticated()});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -64,7 +67,10 @@ router.get('/task/:id', async (req, res) => {
     const taskData = await Task.findByPk(req.params.id);
     const task = taskData.get({ plain: true });
 
-    res.render('task', { task });
+    res.render('task', { 
+      task,
+      logged_in: req.oidc.isAuthenticated()
+    });
   } catch (err) {
     res.status(500).json(err);
   }

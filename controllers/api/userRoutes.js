@@ -1,7 +1,6 @@
 const router = require('express').Router();
 
 const { Project } = require('../../models');
-const withAuth = require('../../utils/auth');
 const { auth } = require('express-openid-connect');
 const { User } = require('../../models');
 const { requiresAuth } = require('express-openid-connect');

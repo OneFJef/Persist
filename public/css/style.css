@@ -12,6 +12,14 @@ div.blue {
   padding: 5px;
 }
 
+div.hide {
+  display: none;
+}
+
+div.show {
+  display: block;
+}
+
 .no-button {
   background: none;
   border: none;

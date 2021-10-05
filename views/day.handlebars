@@ -2,7 +2,7 @@
 <div class="column is-1"></div>
 
 {{!-- Builds the dropdowns --}}
-<div class="column is-2 is-centered">
+<div class="column is-2">
     <form class="form build-day-form">
         <div class="field">
             <label class="label">Color</label>
@@ -31,12 +31,33 @@
 {{!-- Append elements here --}}
 <div class="column is-8">
     {{!-- Build stuff based off this --}}
-    <div class="column is-centered">
+    <div class="column">
         <div class="content blue">
             <h1>Workout</h1>
             <p>100X Squats</p>
+            {{!-- Add the "hide" class to this object once time has passed --}}
+            <div class="show">
+                <button class="button is-danger">Remove</button>
+            </div>
+            {{!-- Remove the "hide" class from these objects when that time of day has passed --}}
+            <div class="show">
+                <h3>Did you complete this on time?</h3>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link is-success" type="submit">Yes</button>
+                    </div>
+                    <div class="control">
+                        <button type="button" class="button is-link is-danger">No</button>
+                    </div>
+                </div>
+                <label class="label">How many hours did it take?</label>
+                <div class="control">
+                    <input class="input" type="number" id="hours" name="hours" />
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
 
 {{!-- Padding --}}

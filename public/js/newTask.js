@@ -1,24 +1,29 @@
-$(() => {
+$(function() {
 
     const createActivityBtn = $(".submit");
     const nextDayBtn = $(".nextDay");
     const prevDayBtn = $(".prevDay");
     const homeBtn = $(".home");
     const calenderBtn = $(".calender");
+    const color = $(".select");
+    const category = $("#category");
+    const category_sub = $("#description");
+    const day = $();
+    const hours = $("#hours");
 
+    
     const newActivityHandler = () => {
-
-        const color = $();
-        const category = $("#project-name").val().trim();
-        const category_sub = $("#project-disc").val().trim();
-        const day = $();
-        const hours = $("#project-funding").val().trim();
         
-            if (color && category && category_sub && day && hours) {
+            if ( category && category_sub && hours) {
+                let categoryVal = category.val();
+                let category_sub_val = category_sub.val();
+                let hoursVal = hours.val();
+
                 $.ajax({
                     type: "POST",
-                    url: "/api/newtask",
-                    data: { color, category, category_sub, day, hours },
+                    url: "/api/task",
+                    data: { categoryVal, category_sub_val, hoursVal },
+                    dataType:"application/json",
 
                 }).done(function() {
                     console.log("category created")
@@ -28,7 +33,7 @@ $(() => {
                 
             } else {alert("Fill out all fields")};
             
-        };
+         };
         
        createActivityBtn.click(function(e){
             e.preventDefault();

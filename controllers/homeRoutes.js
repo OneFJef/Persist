@@ -6,7 +6,9 @@ router.get('/', async (req, res) => {
     const taskData = await Task.findAll();
     const tasks = taskData.map((task) => task.get({ plain: true }));
 
-    res.render('homepage', { tasks });
+    res.render('homepage', { 
+      tasks,
+      logged_in: req.oidc.isAuthenticated()});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -64,37 +66,6 @@ router.get('/task/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
-
-// Edit a specific task
-router.put('/task/:id', async (req, res) => {
-  try {
-    const taskData = await Task.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!taskData[0]) {
-      res.status(404).json({ message: "No task found with that id" });
-      return;
-    }
-
-    const task = taskData.get({ plain: true });
-    res.render('task', { task });
-    
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
-
-  res.render('login');
 });
 
 module.exports = router;

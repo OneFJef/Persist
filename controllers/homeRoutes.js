@@ -15,8 +15,10 @@ router.get('/', async (req, res) => {
 
 router.get('/day', async (req, res) => {
   try {
+    const taskData = await Task.findAll();
+    const tasks = taskData.map((task) => task.get({ plain: true }));
+    res.render('day', { tasks });
 
-    res.render('day');
   } catch (err) {
     res.status(500).json(err);
   }
@@ -34,10 +36,10 @@ router.get('/newtask', async (req, res) => {
 // Create new task
 router.post("/newtask", async (req, res) => {
   try {
-    
+
     const { color, category, category_sub, day, hours } = req.body;
     const taskData = await Task.create({ color, category, category_sub, day, hours });
-    
+
     res.status(200).json(taskData);
   } catch (err) {
     res.status(400).json(err);
@@ -81,7 +83,7 @@ router.put('/task/:id', async (req, res) => {
 
     const task = taskData.get({ plain: true });
     res.render('task', { task });
-    
+
   } catch (err) {
     res.status(500).json(err);
   }

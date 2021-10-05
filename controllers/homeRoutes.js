@@ -33,6 +33,7 @@ router.get('/newtask', async (req, res) => {
   }
 });
 
+// Create new task
 router.post("/newtask", async (req, res) => {
   try {
     
@@ -54,6 +55,8 @@ router.get('/week', async (req, res) => {
   }
 });
 
+
+// Go to a specific task
 router.get('/task/:id', async (req, res) => {
   try {
     const taskData = await Task.findByPk(req.params.id);

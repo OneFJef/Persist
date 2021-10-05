@@ -11,12 +11,14 @@ Task.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-Task.hasMany(Day, {
-  foreignKey: 'task_id'
-})
+Task.belongsToMany(Day, {
+  foreignKey: "task_id",
+  through: "task_day",
+});
 
 Day.belongsToMany(Task, {
   foreignKey: "task_id",
+  through: "task_day",
 });
 
 module.exports = { User, Task, Day };

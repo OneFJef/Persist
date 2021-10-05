@@ -6,7 +6,9 @@ router.get('/', async (req, res) => {
     const taskData = await Task.findAll();
     const tasks = taskData.map((task) => task.get({ plain: true }));
 
-    res.render('homepage', { tasks });
+    res.render('homepage', { 
+      tasks,
+      logged_in: req.oidc.isAuthenticated()});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -67,6 +69,7 @@ router.get('/task/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 // Edit a specific task
 router.put('/task/:id', async (req, res) => {

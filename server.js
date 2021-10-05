@@ -3,7 +3,6 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
 const { auth } = require('express-openid-connect');
@@ -18,7 +17,7 @@ const hbs = exphbs.create();
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: 'a long, randomly-generated string stored in env',
+  secret: process.env.SECRET_KEY,
   baseURL: 'http://localhost:3001' || 'https://ancient-ravine-93786.herokuapp.com',
   clientID: 'NOlcPn22ZIK5NqyWdor03o61uJfSh72X',
   issuerBaseURL: 'https://dev-cx6ypp69.us.auth0.com'

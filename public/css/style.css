@@ -7,6 +7,11 @@ p.pad-me {
   padding-bottom: 10px;
 }
 
+div.blue {
+  background-color: aliceblue;
+  padding: 5px;
+}
+
 .no-button {
   background: none;
   border: none;

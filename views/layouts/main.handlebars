@@ -22,7 +22,7 @@
     <nav class="navbar" role="navigation" aria-label="main-navigation">
       <div class="navbar-menu">
         <!-- Conditionally render login or logout links -->
-        {{!-- {{#if logged_in}} --}}
+        {{#if logged_in}}
         <div class="navbar-start">
           <div class="navbar-item">
             <a href="/newtask" class="navbar-item">New Task</a>
@@ -38,13 +38,8 @@
           </div>
         </div>
       </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <a href='/logout' <button class="button" id="logout">logout</button></a>
-        </div>
       </div>
-      </div>
-      {{!-- {{else}}
+      {{else}}
       <div class="navbar-menu">
         <div class="navbar-start">
           <div class="navbar-item">
@@ -52,7 +47,7 @@
           </div>
         </div>
       </div>
-      {{/if}} --}}
+      {{/if}}
     </nav>
     </div>
   </header>
@@ -71,6 +66,15 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="./js/newTask.js"></script>
+  {{#if logged_in}}
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a href="/logout" class="navbar-item">logout</a>
+          </div>
+        </div>
+      </div>
+  {{/if}}
 </body>
 
 </html>

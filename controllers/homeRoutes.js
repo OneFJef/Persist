@@ -6,7 +6,9 @@ router.get('/', async (req, res) => {
     const taskData = await Task.findAll();
     const tasks = taskData.map((task) => task.get({ plain: true }));
 
-    res.render('homepage', { tasks });
+    res.render('homepage', { 
+      tasks,
+      logged_in: req.oidc.isAuthenticated()});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -15,8 +17,10 @@ router.get('/', async (req, res) => {
 
 router.get('/day', async (req, res) => {
   try {
+    const taskData = await Task.findAll();
+    const tasks = taskData.map((task) => task.get({ plain: true }));
+    res.render('day', { tasks });
 
-    res.render('day');
   } catch (err) {
     res.status(500).json(err);
   }
@@ -54,6 +58,7 @@ router.get('/task/:id', async (req, res) => {
   }
 });
 
+
 // Edit a specific task
 router.put('/task/:id', async (req, res) => {
   try {
@@ -69,7 +74,7 @@ router.put('/task/:id', async (req, res) => {
 
     const task = taskData.get({ plain: true });
     res.render('task', { task });
-    
+
   } catch (err) {
     res.status(500).json(err);
   }

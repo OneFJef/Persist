@@ -1,0 +1,43 @@
+{{!-- Padding --}}
+<div class="column is-1"></div>
+
+{{!-- Builds the dropdowns --}}
+<div class="column is-2 is-centered">
+    <form class="form build-day-form">
+        <div class="field">
+            <label class="label">Color</label>
+            <div class="control">
+                <div class="select">
+                    <select>
+                        <option>Add an activity</option>
+                        {{#each tasks}}
+                        <option>{{this.category}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link" type="submit">Create</button>
+            </div>
+            <div class="control">
+                <button type="button" class="button is-link is-light">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{{!-- Append elements here --}}
+<div class="column is-8">
+    {{!-- Build stuff based off this --}}
+    <div class="column is-centered">
+        <div class="content blue">
+            <h1>Workout</h1>
+            <p>100X Squats</p>
+        </div>
+    </div>
+</div>
+
+{{!-- Padding --}}
+<div class="column is-1"></div>

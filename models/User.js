@@ -20,10 +20,6 @@ User.init(
         isEmail: true,
       },
     },
-    auth_token: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   },
   {
     sequelize,

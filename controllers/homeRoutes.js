@@ -64,27 +64,8 @@ router.get("/task/:id", async (req, res) => {
   }
 });
 
-// Edit a specific task
-router.put("/task/:id", async (req, res) => {
-  try {
-    const taskData = await Task.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!taskData[0]) {
-      res.status(404).json({ message: "No task found with that id" });
-      return;
-    }
 
-    const task = taskData.get({ plain: true });
-    res.render("task", { task });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/login", (req, res) => {
+router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect("/profile");

@@ -42,16 +42,19 @@
         </div>
       </div>
 
-      <div class="field">
-        <label class="label">Day:</label>
-        <div class="control">
-          <input class="input" type="text" id="day" name="day" />
-        </div>
+      <div class="notification is-primary added">
+        <button class="delete"></button>
+        Task added!
+      </div>
+
+      <div class="notification is-danger complete">
+        <button class="delete"></button>
+        Please fill out all fields!
       </div>
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-link" type="submit">Create</button>
+          <button class="button is-link" id="submit" type="submit">Create</button>
         </div>
         <div class="control">
           <button type="button" class="button is-link is-light">Cancel</button>

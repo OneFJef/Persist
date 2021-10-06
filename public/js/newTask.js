@@ -1,45 +1,64 @@
-$(function() {
+$(function () {
 
-    const createActivityBtn = $(".submit");
-    const nextDayBtn = $(".nextDay");
-    const prevDayBtn = $(".prevDay");
-    const homeBtn = $(".home");
-    const calenderBtn = $(".calender");
-    const color = $(".select");
+    const createTaskBtn = $("#submit");
+    const deleteBtn = $(".delete")
+    const color = $("select");
     const category = $("#category");
     const category_sub = $("#description");
-    const day = $();
     const hours = $("#hours");
 
-    
-    const newActivityHandler = () => {
-        
-            if ( category && category_sub && hours) {
-                let categoryVal = category.val();
-                let category_sub_val = category_sub.val();
-                let hoursVal = hours.val();
+    const newTaskHandler = () => {
+        if (color.val() && category.val() && category_sub.val() && hours.val()) {
 
-                $.ajax({
-                    type: "POST",
-                    url: "/api/task",
-                    data: { categoryVal, category_sub_val, hoursVal },
-                    dataType:"application/json",
+            let taskData = {
+                color: color.val(),
+                category: category.val(),
+                category_sub: category_sub.val(),
+                hours: hours.val(),
+            };
 
-                }).done(function() {
-                    console.log("category created")
-                }).fail(function() {
-                    console.error("500 server error")
-                })
-                
-            } else {alert("Fill out all fields")};
-            
-         };
-        
-       createActivityBtn.click(function(e){
-            e.preventDefault();
-           newActivityHandler();
-       });
+            $.ajax({
+                type: "POST",
+                url: "/api/task",
+                data: taskData,
+                complete: function () {
+                    $(".added").show();
+                }
+            });
+        } else $(".complete").show();
 
+    };
 
+    const renderNewTask = () => {
+        const task = $("<h1>").text("task");
+        const desc = $("p").text("description");
+        $(".addTask").append(task, desc);
+
+    };
+
+    createTaskBtn.click(function(e) {
+        e.preventDefault();
+        newTaskHandler();
+    });
+
+    deleteBtn.click(function(e) {
+        e.preventDefault();
+        $(".notification").hide();
+    })
 
 });
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+

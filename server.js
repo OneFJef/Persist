@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 
@@ -18,7 +17,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.SECRET_KEY,
-  baseURL: 'http://localhost:3001' || 'https://ancient-ravine-93786.herokuapp.com',
+  baseURL: 'https://ancient-ravine-93786.herokuapp.com' || 'http://localhost:3001',
   clientID: 'NOlcPn22ZIK5NqyWdor03o61uJfSh72X',
   issuerBaseURL: 'https://dev-cx6ypp69.us.auth0.com'
 };

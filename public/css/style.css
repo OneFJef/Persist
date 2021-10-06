@@ -40,3 +40,11 @@ div.show {
   font-weight: bold;
   margin-left: -5px;
 }
+
+.added {
+  display: none;
+}
+
+.complete {
+  display: none;
+}

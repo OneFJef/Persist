@@ -1,6 +1,7 @@
 $(function () {
 
     const createTaskBtn = $("#submit");
+    const deleteBtn = $(".delete")
     const color = $("select");
     const category = $("#category");
     const category_sub = $("#description");
@@ -28,12 +29,26 @@ $(function () {
 
     };
 
-    createTaskBtn.click(function (e) {
+    const renderNewTask = () => {
+        const task = $("<h1>").text("task");
+        const desc = $("p").text("description");
+        $(".addTask").append(task, desc);
+
+    };
+
+    createTaskBtn.click(function(e) {
         e.preventDefault();
         newTaskHandler();
     });
 
+    deleteBtn.click(function(e) {
+        e.preventDefault();
+        $(".notification").hide();
+    })
+
 });
+        
+        
 
 
 

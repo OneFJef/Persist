@@ -10,7 +10,6 @@ CREATE TABLE `task` (
   `color` varchar(50) DEFAULT NULL,
   `category` varchar(50) NOT NULL,
   `category_sub` varchar(50) DEFAULT NULL,
-  `day` int NOT NULL,
   `hours` int NOT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`),

@@ -4,7 +4,7 @@ const { Task } = require('../../models');
 // Create new task
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
+    
     const { color, category, category_sub, hours } = req.body;
     const taskData = await Task.create({ color, category, category_sub, hours });
     

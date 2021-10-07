@@ -22,7 +22,7 @@ Day.init(
         key: "id",
       },
     },
-    hours: {
+    activity_length: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

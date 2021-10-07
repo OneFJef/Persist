@@ -17,7 +17,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.SECRET_KEY,
-  baseURL: 'https://ancient-ravine-93786.herokuapp.com' || 'http://localhost:3001',
+  baseURL: process.env.NODE_ENV === "production" ? 'https://ancient-ravine-93786.herokuapp.com' : 'http://localhost:3001',
   clientID: 'NOlcPn22ZIK5NqyWdor03o61uJfSh72X',
   issuerBaseURL: 'https://dev-cx6ypp69.us.auth0.com'
 };

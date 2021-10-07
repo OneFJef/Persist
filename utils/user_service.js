@@ -4,11 +4,11 @@ const currentUser = async (req, res, next) => {
     try {
         const user = await User.findOne({
             where: {
-                username: req.oidc.name,
+                email: req.oidc.user.email,
             }
         })
-        req.currentuser = user.get({ plain: true })
-        next()
+        req.currentuser = user.get({ plain: true });
+        next();
     } catch (err) {
         res.status(400).send();
         console.error(err);
@@ -16,6 +16,7 @@ const currentUser = async (req, res, next) => {
     };
 
 };
+        
 
 module.exports = {
     currentUser

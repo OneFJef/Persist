@@ -13,6 +13,15 @@ router.get("/", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+  try {
+    const dbUserData = await User.create({
+      username: req.oidc.user.nickname,
+      email: req.oidc.user.email,
+      source: req.oidc.user.sub,
+    });
+  }
+  catch (err) {
+  }
 });
 
 router.get("/day", async (req, res) => {

@@ -15,4 +15,19 @@ router.post('/', async (req, res) => {
   }
 });
 
+// router.get("/", async (req, res) => {
+//   try {
+//     const userData = await User.findOne(
+//       {
+//         where: {
+//           username: req.oidc.name,
+//         }
+//       }).then((userData) => {
+//         res.json
+//       })
+//   } catch {
+
+//   }
+// })
+
 module.exports = router;

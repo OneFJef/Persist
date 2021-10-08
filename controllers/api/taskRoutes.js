@@ -10,7 +10,7 @@ router.post("/", currentUser, async (req, res) => {
   try {
     // if()
     const { color, category, category_sub, hours, } = req.body;
-    const taskData = await Task.create({ color, category, category_sub, hours, user_id: req.currentuser.email });
+    const taskData = await Task.create({ color, category, category_sub, hours, user_email: req.currentuser.email });
     
     res.status(200).json(taskData);
   } catch (err) {

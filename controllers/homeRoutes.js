@@ -3,7 +3,11 @@ const { User, Task, Day } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
-    const taskData = await Task.findAll();
+    const taskData = await Task.findAll({
+      where: {
+        user_id: req.oidc.user.email,
+      }
+    });
     const tasks = taskData.map((task) => task.get({ plain: true }));
 
     res.render("homepage", {
@@ -26,14 +30,20 @@ router.get("/", async (req, res) => {
 
 router.get("/day", async (req, res) => {
   try {
-    const taskData = await Task.findAll({
-      include: [{ model: Day }],
-    });
+    const taskData = await Task.findAll(
+      {
+        where: {
+          user_id: req.oidc.user.email
+        }
+      },
+      {
+        include: [{ model: Day }],
+      });
     const tasks = taskData.map((task) => task.get({ plain: true }));
-    res.render('day', { 
+    res.render('day', {
       tasks,
       logged_in: req.oidc.isAuthenticated()
-     });
+    });
 
   } catch (err) {
     res.status(500).json(err);
@@ -43,7 +53,7 @@ router.get("/day", async (req, res) => {
 router.get("/newtask", async (req, res) => {
   try {
 
-    res.render('newtask', {logged_in: req.oidc.isAuthenticated()})
+    res.render('newtask', { logged_in: req.oidc.isAuthenticated() })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -52,7 +62,7 @@ router.get("/newtask", async (req, res) => {
 router.get("/week", async (req, res) => {
   try {
 
-    res.render('week', {logged_in: req.oidc.isAuthenticated()});
+    res.render('week', { logged_in: req.oidc.isAuthenticated() });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -64,7 +74,7 @@ router.get("/task/:id", async (req, res) => {
     const taskData = await Task.findByPk(req.params.id);
     const task = taskData.get({ plain: true });
 
-    res.render('task', { 
+    res.render('task', {
       task,
       logged_in: req.oidc.isAuthenticated()
     });

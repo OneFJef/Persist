@@ -1,12 +1,16 @@
 const router = require('express').Router();
+const { auth } = require('express-openid-connect');
 const { Task } = require('../../models');
+const { currentUser } = require("../../utils/user_service");
+
 
 // Create new task
-router.post("/", async (req, res) => {
+router.post("/", currentUser, async (req, res) => {
+
   try {
-    
-    const { color, category, category_sub, hours } = req.body;
-    const taskData = await Task.create({ color, category, category_sub, hours });
+    // if()
+    const { color, category, category_sub, hours, } = req.body;
+    const taskData = await Task.create({ color, category, category_sub, hours, user_id: req.currentuser.email });
     
     res.status(200).json(taskData);
   } catch (err) {

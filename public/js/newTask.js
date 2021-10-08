@@ -1,3 +1,4 @@
+
 $(function () {
 
     const createTaskBtn = $("#submit");
@@ -6,9 +7,11 @@ $(function () {
     const category = $("#category");
     const category_sub = $("#description");
     const hours = $("#hours");
+    
 
     const newTaskHandler = () => {
-        if (color.val() && category.val() && category_sub.val() && hours.val()) {
+
+        if (color.val() && category.val() && hours.val()) {
 
             let taskData = {
                 color: color.val(),

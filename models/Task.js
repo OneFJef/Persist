@@ -27,11 +27,11 @@ Task.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
+    user_email: {
+      type: DataTypes.STRING,
       references: {
         model: 'user',
-        key: 'id',
+        key: 'email',
       },
     },
   },

@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
   try {
     const taskData = await Task.findAll({
       where: {
-        user_id: req.oidc.user.email,
+        user_email: req.oidc.user.email,
       }
     });
     const tasks = taskData.map((task) => task.get({ plain: true }));
@@ -37,7 +37,7 @@ router.get("/day", async (req, res) => {
     const taskData = await Task.findAll(
       {
         where: {
-          user_id: req.oidc.user.email
+        user_email: req.oidc.user.email
         }
       },
       {

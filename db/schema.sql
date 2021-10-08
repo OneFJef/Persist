@@ -10,11 +10,11 @@ CREATE TABLE `task` (
   `category` varchar(50) NOT NULL,
   `category_sub` varchar(50) DEFAULT NULL,
   `hours` int NOT NULL,
-  `user_id` int NOT NULL,
+  `user_email` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `task_table_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `user_email` (`user_email`),
+  CONSTRAINT `task_ibfk_1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `day` (
   `id` int NOT NULL AUTO_INCREMENT,

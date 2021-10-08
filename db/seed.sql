@@ -1,14 +1,14 @@
 INSERT INTO
-    `user` (id, username, email)
+    `user` (id, email)
 VALUES
-    (20, 'alex123', 'persist-alex@mailinator.com');
+    (200, 'persist-alex@mailinator.com');
 
 INSERT INTO
-    `task` (id, color, category, category_sub, `hours`, `user_id`)
+    `task` (id, color, category, category_sub, `hours`, `user_email`)
 VALUES
-    (20 'green', 'fitness', '', 10, 20);
+    (200 'green', 'fitness', '', 10, 200);
 
 INSERT INTO
     `day` (id, `day`, task_id, activity_length)
 VALUES
-    (20, 1, 20, 5);
+    (200, 1, 20, 5);

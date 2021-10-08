@@ -7,6 +7,9 @@
   <title>Persist</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 </head>
 
 <body>
@@ -36,6 +39,11 @@
           <div class="navbar-item">
             <a href="/logout" class="navbar-item">Logout</a>
         </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a href="/logout" class="navbar-item">logout</a>
+          </div>
+        </div>
       </div>
       </div>
       {{else}}
@@ -57,14 +65,7 @@
       {{{ body }}}
     </div>
   </section>
-
-  <!-- Render script for logged in users only -->
-  {{!-- {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}} --}}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="./js/newTask.js"></script>
-
 </body>
 
 </html>

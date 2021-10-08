@@ -3,12 +3,13 @@
 
 {{!-- Builds the dropdowns --}}
 <div class="column is-2">
+    <div class="content today"></div>
     <form class="form build-day-form">
         <div class="field">
-            <label class="label">Color</label>
+            <label class="label">Add</label>
             <div class="control">
                 <div class="select">
-                    <select>
+                    <select class="task-name">
                         <option>Add an activity</option>
                         {{#each tasks}}
                         <option>{{this.category}}</option>
@@ -19,14 +20,14 @@
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" type="submit">Create</button>
+                <button class="button is-link task-submit" type="button">Create</button>
             </div>
         </div>
     </form>
 </div>
 
 {{!-- Append elements here --}}
-<div class="column is-8">
+<div class="column is-8 hours-div">
     {{!-- Build stuff based off this --}}
     <div class="column">
         <div class="content blue">
@@ -55,7 +56,9 @@
         </div>
     </div>
 </div>
-</div>
+
 
 {{!-- Padding --}}
 <div class="column is-1"></div>
+
+  <script src="./js/day.js"></script>

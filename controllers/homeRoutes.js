@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { User, Task, Day } = require("../models");
-
+const { isAuthenticated } = require("express-openid-connect")
 router.get("/", async (req, res) => {
+  if (req.oidc.isAuthenticated()) {
   try {
     const taskData = await Task.findAll({
       where: {
@@ -21,11 +22,14 @@ router.get("/", async (req, res) => {
     const dbUserData = await User.create({
       username: req.oidc.user.nickname,
       email: req.oidc.user.email,
-      source: req.oidc.user.sub,
     });
   }
   catch (err) {
   }
+}
+else {
+  res.redirect("/login")
+}
 });
 
 router.get("/day", async (req, res) => {

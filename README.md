@@ -71,13 +71,6 @@ individual cards and see the alloted time for each task.
 
 (.assets/images/categories.png)
 
-********
-The user can also view their week as a whole by clicking on 
-the Week View tab in the navigation bar. This allows the user to view each 
-day of the week side by side in column form with the tasks they have for
-each day under each day and in sequential order.
-
-(.assets/images/week.png)
 
 
 ## Credits

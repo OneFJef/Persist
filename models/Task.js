@@ -34,6 +34,14 @@ Task.init(
         key: 'email',
       },
     },
+    start_time: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    is_completed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    }
   },
   {
     sequelize,

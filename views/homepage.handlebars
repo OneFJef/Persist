@@ -2,11 +2,11 @@
 {{#each tasks as |task| }}
 <div class="column is-4 project">
   <div class="card">
-    <header class="card-header color-fill {{#unless task.is_completed}}
+    <header class="card-header {{task.color}} {{#unless task.is_completed}}
   color-problem
   {{/unless}}">
       <p class="card-header-title">
-        <a href="/task/{{task.id}}">{{task.category}}</a>
+        <a class="light" href="/task/{{task.id}}">{{task.category}}</a>
       </p>
     </header>
     <div class="card-content">

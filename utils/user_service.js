@@ -1,5 +1,6 @@
 const { User } = require("../models");
 
+//middleware to get the current user auth0 data
 const currentUser = async (req, res, next) => {
     try {
         const user = await User.findOne({

@@ -128,14 +128,14 @@ const createAndAppendTask = (header, paragraph, hours, id, start) => {
         e.preventDefault();
         columnAdd.addClass("hide");
         updateCompletion(id, true);
-        //deleteTask(id);
+        deleteTask(id);
     });
 
     hiddenFailButt.on("click", (e) => {
         e.preventDefault();
         columnAdd.addClass("hide");
         updateCompletion(id, false);
-        //deleteTask(id);
+        deleteTask(id);
     });
 };
 

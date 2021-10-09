@@ -208,6 +208,7 @@ const checkHours = (newHours) => {
     });
 
     const totalHours = newHours + existingHours;
+    console.log(totalHours)
     if (totalHours <= dayHours) {
         return true;
     };
@@ -222,6 +223,7 @@ const addTaskToDay = () => {
                 url: "/tasks",
                 method: "GET",
             }).then((response) => {
+                console.log(response)
                 const categoryName = taskName.val();
                 for (let i = 0; i < response.length; i++) {
                     if (response[i].category == categoryName) {

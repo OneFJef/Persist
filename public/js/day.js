@@ -61,10 +61,11 @@ const deleteTask = (id) => {
         };
 
         for (let i = 0; i < taskIds.length; i++) {
-            if (taskIds[i].task_id = id) {
+            if (taskIds[i].task_id == id) {
                 idToDelete.push(taskIds[i].id);
             };
         };
+        console.log(idToDelete);
         $.ajax({
             url: `/day/${idToDelete[0]}`,
             method: "DELETE",
@@ -75,7 +76,11 @@ const deleteTask = (id) => {
 };
 
 // Creates the task HTML element and appends it
-const createAndAppendTask = (header, paragraph, hours, id) => {
+const createAndAppendTask = (header, paragraph, hours, id, start) => {
+
+    const currentHour = dayjs().hour() + 1;
+    const completionLength = start + hours;
+
 
     //Render the task
     let columnAdd = $("<div>").addClass("column");
@@ -86,32 +91,52 @@ const createAndAppendTask = (header, paragraph, hours, id) => {
     let shownButt = $("<div>").addClass("show");
     let removeButt = $("<button>").addClass("button is-danger").html("Remove");
 
-    shownButt.append(removeButt);
-    sectionDiv.append(sectionHead, description, hoursPara, shownButt);
-    columnAdd.append(sectionDiv);
-    hoursDiv.append(columnAdd);
-
-    removeButt.on("click", (e) => {
-        e.preventDefault();
-        columnAdd.addClass("hide");
-        deleteTask(id);
-    });
-};
-
-// Creates the the controls of the hidden HTML elements
-const createHiddenControls = (response) => {
-
     //Hidden until conditions are met
-    let hiddenControls = $("<div>").addClass("hide");
+    let hiddenControls = $("<div>").addClass("pad-me hide");
     let hiddenCaption = $("<h3>").html("Did you complete this on time?");
     let hiddenField = $("<div>").addClass("field is-grouped");
     let hiddenSuccess = $("<div>").addClass("control success");
     let hiddenFailure = $("<div>").addClass("control failure");
     let hiddenSuccButt = $("<button>").addClass("button is-link is-success").attr("type", "button").html("Yes");
     let hiddenFailButt = $("<button>").addClass("button is-link is-danger").attr("type", "button").html("No");
-    let hiddenLabel = $("label").addClass("label").html("How many hours did it take?");
-    let hiddenTimeControl = $("<div>").addClass("control");
-    let hiddenTimeInput = $("<input>").addClass("input").attr("number");
+
+    shownButt.append(removeButt);
+
+    hiddenFailure.append(hiddenFailButt);
+    hiddenSuccess.append(hiddenSuccButt);
+    hiddenField.append(hiddenSuccess, hiddenFailure);
+    hiddenControls.append(hiddenCaption, hiddenField);
+
+    sectionDiv.append(sectionHead, description, hoursPara, shownButt, hiddenControls);
+    columnAdd.append(sectionDiv);
+
+    hoursDiv.append(columnAdd);
+
+    if (currentHour > completionLength) {
+        hiddenControls.removeClass("hide");
+        sectionDiv.removeClass("blue");
+        sectionDiv.addClass("grey");
+    };
+
+    removeButt.on("click", (e) => {
+        e.stopPropagation();
+        columnAdd.addClass("hide");
+        deleteTask(id);
+    });
+
+    hiddenSuccButt.on("click", (e) => {
+        e.preventDefault();
+        columnAdd.addClass("hide");
+        updateCompletion(id, 1);
+        //deleteTask(id);
+    });
+
+    hiddenFailButt.on("click", (e) => {
+        e.preventDefault();
+        columnAdd.addClass("hide");
+        updateCompletion(id, 0);
+        //deleteTask(id);
+    });
 };
 
 // Loads all of the daily tasks from the DB
@@ -133,7 +158,7 @@ const loadDay = () => {
                 url: `/taskData/${taskIds[i]}`,
                 method: "GET",
             }).then((response) => {
-                createAndAppendTask(response.category, response.category_sub, response.hours, response.id);
+                createAndAppendTask(response.category, response.category_sub, response.hours, response.id, response.start_time);
             });
         };
     });
@@ -202,7 +227,7 @@ const addTaskToDay = () => {
                     if (response[i].category == categoryName) {
                         const timeLeft = checkHours(response[i].hours);
                         if (timeLeft === true) {
-                            createAndAppendTask(response[i].category, response[i].category_sub, response[i].hours, response[i].id);
+                            createAndAppendTask(response[i].category, response[i].category_sub, response[i].hours, response[i].id, response[i].start_time);
                             addDayToDB(response[i].id, response[i].hours);
                         } else {
                             console.log("Too many Hours");
@@ -216,6 +241,19 @@ const addTaskToDay = () => {
     });
 };
 
+// Updates the completion status
+const updateCompletion = (id, bool) => {
+    const taskData = { is_completed: bool };
+
+    $.ajax({
+        url: `/task/${id}`,
+        method: "PUT",
+        data: taskData,
+    }).then((response) => {
+        console.log(response);
+    });
+};
+
 // Starts the functionality on page load
 const init = () => {
     onPageLoad();
@@ -226,5 +264,5 @@ const init = () => {
     checkHours(0);
 };
 
-init();
 
+init();

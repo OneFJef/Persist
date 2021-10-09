@@ -127,14 +127,14 @@ const createAndAppendTask = (header, paragraph, hours, id, start) => {
     hiddenSuccButt.on("click", (e) => {
         e.preventDefault();
         columnAdd.addClass("hide");
-        updateCompletion(id, 1);
+        updateCompletion(id, true);
         //deleteTask(id);
     });
 
     hiddenFailButt.on("click", (e) => {
         e.preventDefault();
         columnAdd.addClass("hide");
-        updateCompletion(id, 0);
+        updateCompletion(id, false);
         //deleteTask(id);
     });
 };
@@ -227,7 +227,7 @@ const addTaskToDay = () => {
                 const categoryName = taskName.val();
                 for (let i = 0; i < response.length; i++) {
                     if (response[i].category == categoryName) {
-                        const timeLeft = checkHours(response[i].hours);
+                        const timeLeft = true;
                         if (timeLeft === true) {
                             createAndAppendTask(response[i].category, response[i].category_sub, response[i].hours, response[i].id, response[i].start_time);
                             addDayToDB(response[i].id, response[i].hours);

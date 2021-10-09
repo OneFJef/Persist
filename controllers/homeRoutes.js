@@ -170,4 +170,35 @@ router.delete("/day/:id", async (req, res) => {
   }
 });
 
+// Update a specific task
+router.put('/task/:id', async (req, res) => {
+  try {
+    const updatedTask = await Task.update(
+      {
+        color: req.body.color,
+        category: req.body.category,
+        category_sub: req.body.category_sub,
+        hours: req.body.hours,
+        user_email: req.body.user_email,
+        start_time: req.body.start_time,
+        is_completed: req.body.is_completed,
+      },
+      {
+        where: {
+          id: req.params.id
+        },
+      },
+    );
+    if (!updatedTask[0]) {
+      res.status(404).json({ message: "No task found with that id" });
+      return;
+    }
+
+    res.json(updatedTask);
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

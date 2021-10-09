@@ -41,7 +41,6 @@ const onPageLoad = () => {
         taskHours = storedHours;
         localStorage.setItem("todayTaskHours", JSON.stringify(taskHours));
     };
-
 };
 
 const deleteTask = (id) => {
@@ -87,6 +86,7 @@ const createAndAppendTask = (header, paragraph, hours, id, start) => {
     let sectionDiv = $("<div>").addClass("content blue");
     let sectionHead = $("<h1>").html(header);
     let description = $("<p>").html(paragraph);
+    let startTime = $("<p>").html("Start time: " + start + ":00");
     let hoursPara = $("<p>").addClass("countHours").html(hours + "hrs");
     let shownButt = $("<div>").addClass("show");
     let removeButt = $("<button>").addClass("button is-danger").html("Remove");
@@ -107,7 +107,7 @@ const createAndAppendTask = (header, paragraph, hours, id, start) => {
     hiddenField.append(hiddenSuccess, hiddenFailure);
     hiddenControls.append(hiddenCaption, hiddenField);
 
-    sectionDiv.append(sectionHead, description, hoursPara, shownButt, hiddenControls);
+    sectionDiv.append(sectionHead, startTime, description, hoursPara, shownButt, hiddenControls);
     columnAdd.append(sectionDiv);
 
     hoursDiv.append(columnAdd);
@@ -181,40 +181,6 @@ const addDayToDB = (id, length) => {
     });
 };
 
-//Checks to see if the day has it's hours full
-const checkHours = (newHours) => {
-    const dayHours = 24;
-    const newTaskHours = [];
-    $.ajax({
-        url: "/buildDay",
-        method: "GET",
-    }).then((response) => {
-        let currentDay = dayjs().day();
-
-        for (let i = 0; i < response.length; i++) {
-            if (response[i].day == currentDay) {
-                newTaskHours.push(response[i].activity_length);
-                localStorage.setItem("todayTaskHours", JSON.stringify(newTaskHours));
-            };
-        };
-    });
-
-    let savedHours = JSON.parse(localStorage.getItem("todayTaskHours"));
-    if (!savedHours) {
-        return;
-    }
-    const existingHours = savedHours.reduce(function (a, b) {
-        return a + b;
-    });
-
-    const totalHours = newHours + existingHours;
-    console.log(totalHours)
-    if (totalHours <= dayHours) {
-        return true;
-    };
-    return false;
-}
-
 // Adds the selected task to the day if there is enough time remaining in the day
 const addTaskToDay = () => {
     taskSubmit.on("click", () => {
@@ -262,7 +228,6 @@ const init = () => {
     let dayCaption = $("<h1>").html(todayDay(dayjs().day()));
     todayDiv.append(dayCaption);
     taskSubmit.on("click", addTaskToDay());
-    checkHours(0);
 };
 
 

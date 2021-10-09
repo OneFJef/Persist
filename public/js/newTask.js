@@ -3,7 +3,8 @@ $(function () {
 
     const createTaskBtn = $("#submit");
     const deleteBtn = $(".delete")
-    const color = $("select");
+    const color = $(".color");
+    const start = $(".start")
     const category = $("#category");
     const category_sub = $("#description");
     const hours = $("#hours");
@@ -11,14 +12,18 @@ $(function () {
 
     const newTaskHandler = () => {
 
-        if (color.val() && category.val() && hours.val()) {
+
+        if (color.val() && category.val() && hours.val() && start.val()) {
 
             let taskData = {
                 color: color.val(),
                 category: category.val(),
                 category_sub: category_sub.val(),
                 hours: hours.val(),
+                start_time: start.val() 
             };
+
+            
 
             $.ajax({
                 type: "POST",
@@ -29,13 +34,6 @@ $(function () {
                 }
             });
         } else $(".complete").show();
-
-    };
-
-    const renderNewTask = () => {
-        const task = $("<h1>").text("task");
-        const desc = $("p").text("description");
-        $(".addTask").append(task, desc);
 
     };
 

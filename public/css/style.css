@@ -1,5 +1,36 @@
-header.color-fill {
-  background-color: orange;
+header.blue {
+  background-color: rgb(37, 37, 180);
+}
+
+header.red {
+  background-color: rgb(192, 24, 24);
+}
+
+header.green {
+  background-color: green;
+}
+
+header.purple {
+  background-color: rgb(119, 4, 119);
+}
+
+header.yellow {
+  background-color: rgb(233, 213, 33);
+}
+
+header.orange {
+  background-color: rgb(224, 150, 12);
+}
+
+a.light {
+  color: white;
+  padding: 2px;
+}
+
+a.light:hover {
+  color: black;
+  background-color: white;
+  border-radius: 5px;
 }
 
 p.pad-me {

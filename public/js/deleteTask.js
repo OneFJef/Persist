@@ -1,14 +1,11 @@
 $(function () {
 
     const deleteBtn = $(".delete1");
-
+    // delete a task from the database
     const deleteTaskHandler = () => {
 
         let url = $(location).attr("href");
-
-
-        let id = url.charAt( url.length - 1 );
-
+        let id = url.split("/").at(-1);
         console.log(id);
 
         $.ajax({
@@ -24,4 +21,6 @@ $(function () {
 
 });
 
-            
+
+
+

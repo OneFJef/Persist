@@ -26,6 +26,10 @@ Day.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    user_email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,

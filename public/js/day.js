@@ -46,7 +46,7 @@ const onPageLoad = () => {
 const deleteTask = (id) => {
 
     $.ajax({
-        url: "buildDay",
+        url: "/api/day",
         method: "GET"
     }).then((response) => {
         let currentDay = dayjs().day();
@@ -66,7 +66,7 @@ const deleteTask = (id) => {
         };
         console.log(idToDelete);
         $.ajax({
-            url: `/day/${idToDelete[0]}`,
+            url: `api/day/${idToDelete[0]}`,
             method: "DELETE",
         }).then((response) => {
             console.log("Success", response);
@@ -142,7 +142,7 @@ const createAndAppendTask = (header, paragraph, hours, id, start) => {
 // Loads all of the daily tasks from the DB
 const loadDay = () => {
     $.ajax({
-        url: "/buildDay",
+        url: "api/day",
         method: "GET",
     }).then((response) => {
         let currentDay = dayjs().day();
@@ -155,7 +155,7 @@ const loadDay = () => {
         };
         for (let i = 0; i < taskIds.length; i++) {
             $.ajax({
-                url: `/taskData/${taskIds[i]}`,
+                url: `/api/task/${taskIds[i]}`,
                 method: "GET",
             }).then((response) => {
                 createAndAppendTask(response.category, response.category_sub, response.hours, response.id, response.start_time);
@@ -173,7 +173,7 @@ const addDayToDB = (id, length) => {
     };
 
     $.ajax({
-        url: `/day`,
+        url: `api/day`,
         method: "POST",
         data: dayData,
     }).then((response) => {
@@ -186,7 +186,7 @@ const addTaskToDay = () => {
     taskSubmit.on("click", () => {
         if (taskName.val() !== "Add an activity") {
             $.ajax({
-                url: "/tasks",
+                url: "/api/task",
                 method: "GET",
             }).then((response) => {
                 const categoryName = taskName.val();
@@ -213,7 +213,7 @@ const updateCompletion = (id, bool) => {
     const taskData = { is_completed: bool };
 
     $.ajax({
-        url: `/task/${id}`,
+        url: `api/task/${id}`,
         method: "PUT",
         data: taskData,
     }).then((response) => {

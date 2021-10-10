@@ -1,10 +1,9 @@
 <!-- Loop over each object in the projects array -->
 {{#each tasks as |task| }}
 <div class="column is-4 project">
-  <div class="card">
-    <header class="card-header {{task.color}} {{#unless task.is_completed}}
-  color-problem
-  {{/unless}}">
+  <div class="card {{#unless task.is_completed}}
+  color-problem{{/unless}}">
+    <header class="card-header {{task.color}}">
       <p class="card-header-title">
         <a class="light" href="/task/{{task.id}}">{{task.category}}</a>
       </p>
@@ -20,7 +19,6 @@
         <p>
           {{task.category_sub}}
         </p>
-        <p>Day {{ task.day}}</p>
       </div>
     </div>
   </div>

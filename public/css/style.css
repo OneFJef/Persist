@@ -33,7 +33,7 @@ a.light:hover {
   border-radius: 5px;
 }
 
-header.color-problem {
+div.color-problem {
   border-color: crimson;
   border-style: solid;
   border-width: thick;

@@ -12,6 +12,7 @@ Time.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // Hours column for checking used hours.
     check_hours: {
       type: DataTypes.STRING,
       allowNull: false,

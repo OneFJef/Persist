@@ -11,10 +11,12 @@ Day.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // Day used to assign tasks to.
     day: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    // Task from the task table.
     task_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -22,10 +24,12 @@ Day.init(
         key: "id",
       },
     },
+    // Length of the task.
     activity_length: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    // User account which a task is assigned to.
     user_email: {
       type: DataTypes.STRING,
       allowNull: false,

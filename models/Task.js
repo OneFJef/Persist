@@ -11,22 +11,27 @@ Task.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // Store for task color.
     color: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // Category of the task.
     category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // Sub category of the task.
     category_sub: {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    // Hours alloted to task.
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    // Logged in user's email from user table.
     user_email: {
       type: DataTypes.STRING,
       references: {

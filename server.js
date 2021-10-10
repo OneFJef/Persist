@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create();
 
-
+// Authentication config for auth0.
 const config = {
   authRequired: false,
   auth0Logout: true,

@@ -3,6 +3,7 @@ require('dotenv').config();
 
 let sequelize;
 
+// Connection to a JAWS database or to local if JAWS is not found.
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {

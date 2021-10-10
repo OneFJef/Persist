@@ -99,6 +99,8 @@ A big thank you to our third party assets:
 
 - Bulma: https://bulma.io/
 
+## Links
 
+GitHub Repository link: https://github.com/OneFJef/Persist
 
-
+Deployed application link: https://ancient-ravine-93786.herokuapp.com/

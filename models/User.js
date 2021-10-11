@@ -12,6 +12,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // User's email address which is unique per account.
     email: {
       type: DataTypes.STRING,
       allowNull: false,
